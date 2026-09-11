@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>Aerova Airways</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel='stylesheet' href='style.css'>
+        <link rel="icon" type="image/png" href="./Assists/images/favicon.png" />
+</head>
+<body class="bg-[#F6F9FC]" >
+<!-- AEROVA AUTH MODAL -->
+<div
+    id="aerova-auth-modal"
+    class="fixed inset-0 z-[9999] hidden items-center justify-center overflow-hidden bg-[#020812]/80 p-4 backdrop-blur-xl"
+>
+    <!-- Ambient Glow -->
+    <div
+        class="pointer-events-none absolute -left-32 -top-32 h-96 w-96 rounded-full bg-[#1597D4]/20 blur-[120px]"
+    ></div>
+
+    <div
+        class="pointer-events-none absolute -bottom-40 -right-32 h-96 w-96 rounded-full bg-cyan-400/10 blur-[120px]"
+    ></div>
+
+    <!-- Modal -->
+    <div
+        id="aerova-auth-card"
+        class="relative flex w-full max-w-[1050px] overflow-hidden rounded-[32px] border border-white/10 bg-[#07131F]/95 shadow-[0_40px_120px_rgba(0,0,0,.55)]"
+    >
+
+        <!-- Close -->
+        <button
+            id="aerova-auth-close"
+            type="button"
+            class="absolute right-5 top-5 z-30 flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-xl text-white/60 backdrop-blur-xl transition duration-300 hover:rotate-90 hover:bg-white/10 hover:text-white"
+        >
+            ×
+        </button>
+
+        <!-- LEFT -->
+        <div
+            class="relative hidden w-[46%] overflow-hidden bg-gradient-to-br from-[#06101A] via-[#082337] to-[#1597D4] p-10 lg:flex lg:flex-col lg:justify-between"
+        >
+
+            <!-- Decorative Grid -->
+            <div
+                class="absolute inset-0 opacity-[0.07]"
+                style="
+                    background-image:
+                    linear-gradient(rgba(255,255,255,.8) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255,255,255,.8) 1px, transparent 1px);
+                    background-size: 42px 42px;
+                "
+            ></div>
+
+            <!-- Glow -->
+            <div
+                class="absolute -right-24 top-20 h-72 w-72 rounded-full bg-cyan-300/20 blur-[100px]"
+            ></div>
+
+            <!-- Brand -->
+            <div class="relative z-10">
+                <div class="mb-8 flex items-center gap-3">
+                    <div
+                        class="flex h-11 w-11 items-center justify-center rounded-2xl border border-white/20 bg-white/10 text-lg font-bold text-white backdrop-blur-xl"
+                    >
+                        A
+                    </div>
+
+                    <div>
+                        <p class="text-sm font-bold tracking-[0.25em] text-white">
+                            AEROVA
+                        </p>
+
+                        <p class="text-[10px] uppercase tracking-[0.25em] text-white/50">
+                            Airways
+                        </p>
+                    </div>
+                </div>
+
+                <div class="max-w-sm">
+                    <p
+                        class="mb-4 text-xs font-semibold uppercase tracking-[0.3em] text-cyan-300"
+                    >
+                        Your journey starts here
+                    </p>
+
+                    <h2
+                        class="text-4xl font-black leading-tight tracking-tight text-white xl:text-5xl"
+                    >
+                        Fly beyond
+                        <span class="text-cyan-300">expectations.</span>
+                    </h2>
+
+                    <p class="mt-5 max-w-sm text-sm leading-7 text-white/60">
+                        Manage your journeys, discover new destinations and
+                        experience a smarter way to travel with Aerova.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Bottom -->
+            <div class="relative z-10 flex items-center justify-between">
+                <div>
+                    <p class="text-xs text-white/40">
+                        Trusted by travelers worldwide
+                    </p>
+
+                    <div class="mt-2 flex items-center gap-1 text-cyan-300">
+                        ★★★★★
+                    </div>
+                </div>
+
+                <div
+                    class="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-[10px] uppercase tracking-widest text-white/50 backdrop-blur-xl"
+                >
+                    EST. 2026
+                </div>
+            </div>
+        </div>
+
+        <!-- RIGHT -->
+        <div
+            class="relative flex min-h-[620px] w-full flex-col justify-center px-6 py-12 sm:px-10 lg:w-[54%] lg:px-16"
+        >
+
+            <!-- LOGIN -->
+            <div id="aerova-login-view" class="w-full max-w-md mx-auto">
+
+                <div class="mb-10">
+                    <p
+                        class="mb-3 text-xs font-bold uppercase tracking-[0.25em] text-[#1597D4]"
+                    >
+                        Welcome back
+                    </p>
+
+                    <h2
+                        class="text-3xl font-black tracking-tight text-white sm:text-4xl"
+                    >
+                        Sign in to Aerova
+                    </h2>
+
+                    <p class="mt-3 text-sm leading-6 text-white/40">
+                        Continue your journey from where you left off.
+                    </p>
+                </div>
+
+                <form id="aerova-login-form" class="space-y-5">
+
+                    <!-- Email -->
+                    <div>
+                        <label
+                            class="mb-2 block text-xs font-semibold uppercase tracking-wider text-white/50"
+                        >
+                            Email
+                        </label>
+
+                        <div class="group relative">
+                            <input
+                                id="aerova-login-email"
+                                type="email"
+                                required
+                                placeholder="you@example.com"
+                                class="h-14 w-full rounded-2xl border border-white/10 bg-white/[0.04] px-5 text-sm text-white outline-none transition duration-300 placeholder:text-white/20 focus:border-[#1597D4]/70 focus:bg-white/[0.07] focus:ring-4 focus:ring-[#1597D4]/10"
+                            />
+                            <p class="validation mt-2 hidden rounded-xl border border-red-400/10 bg-red-400/5 px-3 py-2 text-xs font-medium text-red-400 transition-all duration-300" ></p>
+                        </div>
+                    </div>
+
+                    <!-- Password -->
+                    <div>
+                        <div class="mb-2 flex items-center justify-between">
+                            <label
+                                class="block text-xs font-semibold uppercase tracking-wider text-white/50"
+                            >
+                                Password
+                            </label>
+
+                            <button
+                                type="button"
+                                class="text-xs text-[#1597D4] transition hover:text-cyan-300"
+                            >
+                                Forgot password?
+                            </button>
+                        </div>
+
+                        <input
+                            id="aerova-login-password"
+                            type="password"
+                            required
+                            placeholder="••••••••"
+                            class="h-14 w-full rounded-2xl border border-white/10 bg-white/[0.04] px-5 text-sm text-white outline-none transition duration-300 placeholder:text-white/20 focus:border-[#1597D4]/70 focus:bg-white/[0.07] focus:ring-4 focus:ring-[#1597D4]/10"
+                        />
+                    </div>
+
+                    <!-- Remember -->
+                    <label
+                        class="flex cursor-pointer items-center gap-3 text-xs text-white/40"
+                    >
+                        <input
+                            type="checkbox"
+                            class="h-4 w-4 rounded border-white/10 bg-white/5 accent-[#1597D4]"
+                        />
+
+                        Keep me signed in
+                    </label>
+
+                    <!-- Submit -->
+                    <button
+                        type="submit"
+                        class="group relative h-14 w-full overflow-hidden rounded-2xl bg-[#1597D4] font-bold text-white shadow-[0_12px_40px_rgba(21,151,212,.25)] transition duration-300 hover:-translate-y-0.5 hover:bg-[#20A9EA] hover:shadow-[0_18px_50px_rgba(21,151,212,.35)]"
+                    >
+                        <span class="relative z-10">
+                            Sign In
+                        </span>
+
+                        <div
+                            class="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition duration-700 group-hover:translate-x-full"
+                        ></div>
+                    </button>
+
+                </form>
+
+                <!-- Divider -->
+                <div class="my-8 flex items-center gap-4">
+                    <div class="h-px flex-1 bg-white/10"></div>
+                    <span class="text-xs text-white/20">OR</span>
+                    <div class="h-px flex-1 bg-white/10"></div>
+                </div>
+
+                <!-- Register -->
+                <p class="text-center text-sm text-white/40">
+                    Don't have an account?
+
+                    <button
+                        id="aerova-show-register"
+                        type="button"
+                        class="ml-1 font-semibold text-[#1597D4] transition hover:text-cyan-300"
+                    >
+                        Create one
+                    </button>
+                </p>
+            </div>
+
+
+            <!-- REGISTER -->
+            <div
+                id="aerova-register-view"
+                class="mx-auto hidden w-full max-w-md"
+            >
+
+                <div class="mb-8">
+                    <p
+                        class="mb-3 text-xs font-bold uppercase tracking-[0.25em] text-[#1597D4]"
+                    >
+                        New traveler
+                    </p>
+
+                    <h2
+                        class="text-3xl font-black tracking-tight text-white sm:text-4xl"
+                    >
+                        Create your account
+                    </h2>
+
+                    <p class="mt-3 text-sm leading-6 text-white/40">
+                        Join Aerova and make every journey easier.
+                    </p>
+                </div>
+
+                <form id="aerova-register-form" class="space-y-4">
+
+                    <div>
+                        <label
+                            class="mb-2 block text-xs font-semibold uppercase tracking-wider text-white/50"
+                        >
+                            Full name
+                        </label>
+
+                        <input
+                            type="text"
+                            required
+                            id="name-input"
+                            placeholder="Alex Morgan"
+                            class="h-13 w-full rounded-2xl border border-white/10 bg-white/[0.04] px-5 text-sm text-white outline-none transition focus:border-[#1597D4]/70 focus:bg-white/[0.07] focus:ring-4 focus:ring-[#1597D4]/10"
+                        />
+                        <p class="name-valid mt-2 hidden rounded-xl border border-red-400/10 bg-red-400/5 px-3 py-2 text-xs font-medium text-red-400 transition-all duration-300" ></p>
+                    </div>
+
+                    <div>
+                        <label
+                            class="mb-2 block text-xs font-semibold uppercase tracking-wider text-white/50"
+                        >
+                            Email
+                        </label>
+
+                        <input
+                            type="email"
+                            required
+                            placeholder="you@example.com"
+                            class="h-13 w-full rounded-2xl border border-white/10 bg-white/[0.04] px-5 text-sm text-white outline-none transition focus:border-[#1597D4]/70 focus:bg-white/[0.07] focus:ring-4 focus:ring-[#1597D4]/10"
+                        />
+                    </div>
+
+                    <div>
+                        <label
+                            class="mb-2 block text-xs font-semibold uppercase tracking-wider text-white/50"
+                        >
+                            Password
+                        </label>
+
+                        <input
+                            type="password"
+                            required
+                            placeholder="Create a password"
+                            class="h-13 w-full rounded-2xl border border-white/10 bg-white/[0.04] px-5 text-sm text-white outline-none transition focus:border-[#1597D4]/70 focus:bg-white/[0.07] focus:ring-4 focus:ring-[#1597D4]/10"
+                        />
+                    </div>
+
+                    <button
+                        type="submit"
+                        class="group relative mt-3 h-14 w-full overflow-hidden rounded-2xl bg-[#1597D4] font-bold text-white shadow-[0_12px_40px_rgba(21,151,212,.25)] transition duration-300 hover:-translate-y-0.5 hover:bg-[#20A9EA]"
+                    >
+                        <span class="relative z-10">
+                            Create Account
+                        </span>
+
+                        <div
+                            class="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition duration-700 group-hover:translate-x-full"
+                        ></div>
+                    </button>
+
+                </form>
+
+                <p class="mt-8 text-center text-sm text-white/40">
+                    Already have an account?
+
+                    <button
+                        id="aerova-show-login"
+                        type="button"
+                        class="ml-1 font-semibold text-[#1597D4] transition hover:text-cyan-300"
+                    >
+                        Sign in
+                    </button>
+                </p>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+    <!-- HeaderStart ------------------------------------------->
+     <header class="bg-[#8FC4D8]/80 backdrop-blur-xl sticky top-0 border-b border-[#183A55] z-90 text-white relative
+               flex items-center justify-between
+               px-8 py-4" >
+        <img src="" alt="LOGO" class="logo">
+        <button
+    id="mobile-menu-btn"
+    class="flex lg:hidden h-11 w-11 items-center justify-center rounded-xl border border-[#183A55] bg-white/20 text-2xl text-[#071A2B]"
+    >
+    ☰
+        </button>
+       <div
+    class="mobile-navbar absolute left-0 top-full hidden w-full border-t border-[#183A55]/30 bg-[#8FC4D8]/95 px-5 py-5 shadow-xl backdrop-blur-xl lg:hidden"
+>
+    <nav class="flex flex-col gap-2">
+
+        <a
+            href="#"
+            class="rounded-xl px-4 py-3 font-medium text-[#071A2B] transition-all duration-300 hover:bg-white/20 hover:pl-6 hover:text-[#1597D4]"
+        >
+            Home
+        </a>
+
+        <a
+            href="#"
+            class="rounded-xl px-4 py-3 font-medium text-[#071A2B] transition-all duration-300 hover:bg-white/20 hover:pl-6 hover:text-[#1597D4]"
+        >
+            Flights
+        </a>
+
+        <a
+            href="#"
+            class="rounded-xl px-4 py-3 font-medium text-[#071A2B] transition-all duration-300 hover:bg-white/20 hover:pl-6 hover:text-[#1597D4]"
+        >
+            Destinations
+        </a>
+
+        <a
+            href="#"
+            class="rounded-xl px-4 py-3 font-medium text-[#071A2B] transition-all duration-300 hover:bg-white/20 hover:pl-6 hover:text-[#1597D4]"
+        >
+            Services
+        </a>
+
+        <a
+            href="#"
+            class="rounded-xl px-4 py-3 font-medium text-[#071A2B] transition-all duration-300 hover:bg-white/20 hover:pl-6 hover:text-[#1597D4]"
+        >
+            About
+        </a>
+
+    </nav>
+</div>
+        <nav class="hidden lg:flex justify-center items-center gap-15" >
+            <a href="#" class="dynamic-text relative text-[#071A2B] transition-colors hover:text-[#1597D4] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full  after:origin-left after:scale-x-0 after:bg-[darkblue] after:transition-transform after:duration-300 hover:after:scale-x-100" data-persian="خانه" data-english="Home" >Home</a>
+            <a href="#" class="dynamic-text relative text-[#071A2B] transition-colors hover:text-[#1597D4] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full  after:origin-left after:scale-x-0 after:bg-[darkblue] after:transition-transform after:duration-300 hover:after:scale-x-100" data-persian="پروازها" data-english="Flights" >Flights</a>
+            <a href="#" class="dynamic-text relative text-[#071A2B] transition-colors hover:text-[#1597D4] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full  after:origin-left after:scale-x-0 after:bg-[darkblue] after:transition-transform after:duration-300 hover:after:scale-x-100" data-english="Destinations" data-persian="مقصدها">Destinations</a>
+            <a href="#" class="dynamic-text relative text-[#071A2B] transition-colors hover:text-[#1597D4] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full  after:origin-left after:scale-x-0 after:bg-[darkblue] after:transition-transform after:duration-300 hover:after:scale-x-100" data-persian="سرویس‌ها" data-english="Services" >Services</a>
+            <a href="#" class="dynamic-text relative text-[#071A2B] transition-colors hover:text-[#1597D4] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full  after:origin-left after:scale-x-0 after:bg-[darkblue] after:transition-transform after:duration-300 hover:after:scale-x-100" data-persian="درباره‌ما" data-english="About" >About</a>
+        </nav>
+        </div>
+     </header>
+
+     <div class="hero-banner relative">
+
+    <img
+        src=""
+        alt="banner"
+        class="h-banner-image h-[400px] w-full object-contain sm:h-[500px] lg:h-[750px] lg:object-cover"
+    >
+
+    <!-- OVERLAY -->
+    <div class="absolute inset-0 h-full w-full backdrop-blur-[2px]"></div>
+
+    <div class="hero-content absolute left-0 top-5 w-full p-5 sm:top-10 sm:p-8 lg:top-16 lg:p-12">
+
+        <p
+            class="mb-4 text-3xl text-[#FFFFFF] sm:mb-5 sm:text-5xl lg:text-6xl"
+        >
+            Beyond Every Destination.
+        </p>
+
+        <p
+            class="text-2xl text-[#E5E7EB] sm:text-4xl lg:text-5xl"
+        >
+            Travel farther. Discover more.
+        </p>
+
+        <div
+            class="buttons mt-16 flex w-full flex-col items-center justify-center gap-4 text-lg sm:mt-24 sm:flex-row sm:gap-8 sm:text-xl lg:mt-35 lg:gap-20 lg:text-2xl"
+        >
+
+            <a
+                href="#search"
+                class="relative z-30 overflow-hidden rounded-full border-2 border-[#1597D4] bg-[#1597D4] px-6 py-4 text-white after:absolute after:-bottom-full after:left-0 after:-z-20 after:h-full after:w-full after:bg-white after:content-[''] after:transition-all after:duration-300 hover:text-[#071A2B] hover:after:bottom-0 sm:px-8 sm:py-5"
+            >
+                Book a Flight
+            </a>
+
+            <a
+                href="#destinations"
+                class="relative z-30 overflow-hidden rounded-full border-2 border-white px-6 py-4 text-white after:absolute after:-bottom-full after:left-0 after:-z-20 after:h-full after:w-full after:bg-[#1597D4] after:content-[''] after:transition-all after:duration-300 hover:text-white hover:after:bottom-0 sm:px-8 sm:py-5"
+            >
+                Explore Destinations
+            </a>
+
+        </div>
+
+    </div>
+</div>
+
+<main class="w-full">
+
+    <!-- Flight Search -->
+    <section class="flights max-w-7xl mx-auto px-6 py-12">
+
+        <!-- Headers -->
+        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6">
+            ...
+        </div>
+
+        <!-- Inputs -->
+        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6">
+
+            <!-- From -->
+            <div class="border-r-2 border-[#071A2B] p-4">
+                <select class="from-input w-full outline-none">
+                </select>
+            </div>
+
+            <!-- To -->
+            <div class="border-r-2 border-[#071A2B] p-4">
+                <select class="to-input w-full outline-none">
+                </select>
+            </div>
+
+            <!-- Departure -->
+            <div class="border-r-2 border-[#071A2B] p-4">
+                <input
+                    type="date"
+                    class="departure-input w-full outline-none"
+                >
+            </div>
+
+            <!-- Return -->
+            <div class="border-r-2 border-[#071A2B] p-4">
+                <input
+                    type="date"
+                    class="return-input w-full outline-none"
+                >
+            </div>
+
+            <!-- Passengers -->
+            <div class="border-r-2 border-[#071A2B] p-4">
+                <select class="passengers-input w-full outline-none">
+                    <option value="1">1 Passenger</option>
+                    <option value="2">2 Passengers</option>
+                    <option value="3">3 Passengers</option>
+                    <option value="4">4 Passengers</option>
+                </select>
+            </div>
+
+            <!-- Search -->
+            <div class="p-4">
+                <button class="search-flights w-full">
+                    Search
+                </button>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Flight Results -->
+    <section class="flights-Area max-w-7xl mx-auto px-6">
+    </section>
+
+
+    <div class="services">
+        <section class="services max-w-7xl mx-auto px-6 py-20" id="services">
+
+    <div class="mb-12 text-center">
+
+        <p class="mb-3 text-sm font-semibold uppercase tracking-[0.25em] text-[#1597D4]">
+            Aerova Services
+        </p>
+
+        <h2 class="text-4xl font-extrabold text-[#071A2B] md:text-5xl">
+            Everything You Need
+        </h2>
+
+        <p class="mx-auto mt-4 max-w-2xl text-gray-500">
+            From booking your flight to enjoying a comfortable journey,
+            Aerova makes every step easier.
+        </p>
+
+    </div>
+
+
+    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+
+        <!-- Service 1 -->
+        <div
+            class="group rounded-3xl border border-[#1597D4]/10 bg-white p-7 shadow-[0_10px_35px_rgba(7,26,43,0.06)] transition-all duration-300 hover:-translate-y-2 hover:border-[#1597D4]/30 hover:shadow-[0_20px_45px_rgba(21,151,212,0.13)]">
+
+            <div
+                class="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-[#1597D4]/10 text-2xl text-[#1597D4] transition-all duration-300 group-hover:bg-[#1597D4] group-hover:text-white">
+                ✈
+            </div>
+
+            <h3 class="text-xl font-bold text-[#071A2B]">
+                Easy Booking
+            </h3>
+
+            <p class="mt-3 leading-7 text-gray-500">
+                Search and book your perfect flight quickly
+                with our simple booking experience.
+            </p>
+
+        </div>
+
+
+        <!-- Service 2 -->
+        <div
+            class="group rounded-3xl border border-[#1597D4]/10 bg-white p-7 shadow-[0_10px_35px_rgba(7,26,43,0.06)] transition-all duration-300 hover:-translate-y-2 hover:border-[#1597D4]/30 hover:shadow-[0_20px_45px_rgba(21,151,212,0.13)]">
+
+            <div
+                class="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-[#1597D4]/10 text-2xl text-[#1597D4] transition-all duration-300 group-hover:bg-[#1597D4] group-hover:text-white">
+                🧳
+            </div>
+
+            <h3 class="text-xl font-bold text-[#071A2B]">
+                Baggage Support
+            </h3>
+
+            <p class="mt-3 leading-7 text-gray-500">
+                Travel with confidence with reliable baggage
+                handling and support.
+            </p>
+
+        </div>
+
+
+        <!-- Service 3 -->
+        <div
+            class="group rounded-3xl border border-[#1597D4]/10 bg-white p-7 shadow-[0_10px_35px_rgba(7,26,43,0.06)] transition-all duration-300 hover:-translate-y-2 hover:border-[#1597D4]/30 hover:shadow-[0_20px_45px_rgba(21,151,212,0.13)]">
+
+            <div
+                class="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-[#1597D4]/10 text-2xl text-[#1597D4] transition-all duration-300 group-hover:bg-[#1597D4] group-hover:text-white">
+                🛋
+            </div>
+
+            <h3 class="text-xl font-bold text-[#071A2B]">
+                Comfortable Travel
+            </h3>
+
+            <p class="mt-3 leading-7 text-gray-500">
+                Enjoy a smooth and comfortable experience
+                throughout your journey.
+            </p>
+
+        </div>
+
+
+        <!-- Service 4 -->
+        <div
+            class="group rounded-3xl border border-[#1597D4]/10 bg-white p-7 shadow-[0_10px_35px_rgba(7,26,43,0.06)] transition-all duration-300 hover:-translate-y-2 hover:border-[#1597D4]/30 hover:shadow-[0_20px_45px_rgba(21,151,212,0.13)]">
+
+            <div
+                class="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-[#1597D4]/10 text-2xl text-[#1597D4] transition-all duration-300 group-hover:bg-[#1597D4] group-hover:text-white">
+                🌍
+            </div>
+
+            <h3 class="text-xl font-bold text-[#071A2B]">
+                Global Destinations
+            </h3>
+
+            <p class="mt-3 leading-7 text-gray-500">
+                Discover exciting destinations across the
+                world with Aerova Airways.
+            </p>
+
+        </div>
+
+
+        <!-- Service 5 -->
+        <div
+            class="group rounded-3xl border border-[#1597D4]/10 bg-white p-7 shadow-[0_10px_35px_rgba(7,26,43,0.06)] transition-all duration-300 hover:-translate-y-2 hover:border-[#1597D4]/30 hover:shadow-[0_20px_45px_rgba(21,151,212,0.13)]">
+
+            <div
+                class="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-[#1597D4]/10 text-2xl text-[#1597D4] transition-all duration-300 group-hover:bg-[#1597D4] group-hover:text-white">
+                🎧
+            </div>
+
+            <h3 class="text-xl font-bold text-[#071A2B]">
+                Customer Support
+            </h3>
+
+            <p class="mt-3 leading-7 text-gray-500">
+                Our support team is ready to help whenever
+                you need assistance.
+            </p>
+
+        </div>
+
+
+        <!-- Service 6 -->
+        <div
+            class="group rounded-3xl border border-[#1597D4]/10 bg-white p-7 shadow-[0_10px_35px_rgba(7,26,43,0.06)] transition-all duration-300 hover:-translate-y-2 hover:border-[#1597D4]/30 hover:shadow-[0_20px_45px_rgba(21,151,212,0.13)]">
+
+            <div
+                class="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-[#1597D4]/10 text-2xl text-[#1597D4] transition-all duration-300 group-hover:bg-[#1597D4] group-hover:text-white">
+                🔒
+            </div>
+
+            <h3 class="text-xl font-bold text-[#071A2B]">
+                Secure Travel
+            </h3>
+
+            <p class="mt-3 leading-7 text-gray-500">
+                Your journey matters to us. Travel with a
+                reliable and secure airline experience.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+    </div>
+    <div class="review-contaienr">
+        <section class="reviews max-w-7xl mx-auto px-6 py-20" id="reviews">
+
+    <div class="mb-12 text-center">
+
+        <p class="mb-3 text-sm font-semibold uppercase tracking-[0.25em] text-[#1597D4]">
+            Passenger Reviews
+        </p>
+
+        <h2 class="text-4xl font-extrabold text-[#071A2B] md:text-5xl">
+            What Our Passengers Say
+        </h2>
+
+        <p class="mx-auto mt-4 max-w-2xl text-gray-500">
+            Real experiences from passengers who travelled with Aerova Airways.
+        </p>
+
+    </div>
+
+
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+
+        <!-- Review 1 -->
+        <div class="group rounded-3xl border border-[#1597D4]/10 bg-white p-7 shadow-[0_10px_35px_rgba(7,26,43,0.06)] transition-all duration-300 hover:-translate-y-2 hover:border-[#1597D4]/30 hover:shadow-[0_20px_45px_rgba(21,151,212,0.13)]">
+
+            <div class="mb-6 flex items-center justify-between">
+
+                <div class="flex items-center gap-4">
+
+                    <div class="flex h-12 w-12 items-center justify-center rounded-full bg-[#1597D4]/10 font-bold text-[#1597D4]">
+                        AM
+                    </div>
+
+                    <div>
+                        <h3 class="font-bold text-[#071A2B]">
+                            Alex Morgan
+                        </h3>
+
+                        <p class="text-sm text-gray-400">
+                            London, UK
+                        </p>
+                    </div>
+
+                </div>
+
+                <span class="text-lg tracking-widest text-[#C49A44]">
+                    ★★★★★
+                </span>
+
+            </div>
+
+            <p class="leading-7 text-gray-500">
+                "The booking process was incredibly simple and the whole journey felt smooth and comfortable."
+            </p>
+
+        </div>
+
+
+        <!-- Review 2 -->
+        <div class="group rounded-3xl border border-[#1597D4]/10 bg-white p-7 shadow-[0_10px_35px_rgba(7,26,43,0.06)] transition-all duration-300 hover:-translate-y-2 hover:border-[#1597D4]/30 hover:shadow-[0_20px_45px_rgba(21,151,212,0.13)]">
+
+            <div class="mb-6 flex items-center justify-between">
+
+                <div class="flex items-center gap-4">
+
+                    <div class="flex h-12 w-12 items-center justify-center rounded-full bg-[#1597D4]/10 font-bold text-[#1597D4]">
+                        SL
+                    </div>
+
+                    <div>
+                        <h3 class="font-bold text-[#071A2B]">
+                            Sophia Lee
+                        </h3>
+
+                        <p class="text-sm text-gray-400">
+                            Paris, France
+                        </p>
+                    </div>
+
+                </div>
+
+                <span class="text-lg tracking-widest text-[#C49A44]">
+                    ★★★★★
+                </span>
+
+            </div>
+
+            <p class="leading-7 text-gray-500">
+                "Aerova made my trip much easier. The flight information was clear and everything felt well organized."
+            </p>
+
+        </div>
+
+
+        <!-- Review 3 -->
+        <div class="group rounded-3xl border border-[#1597D4]/10 bg-white p-7 shadow-[0_10px_35px_rgba(7,26,43,0.06)] transition-all duration-300 hover:-translate-y-2 hover:border-[#1597D4]/30 hover:shadow-[0_20px_45px_rgba(21,151,212,0.13)]">
+
+            <div class="mb-6 flex items-center justify-between">
+
+                <div class="flex items-center gap-4">
+
+                    <div class="flex h-12 w-12 items-center justify-center rounded-full bg-[#1597D4]/10 font-bold text-[#1597D4]">
+                        DN
+                    </div>
+
+                    <div>
+                        <h3 class="font-bold text-[#071A2B]">
+                            Daniel Novak
+                        </h3>
+
+                        <p class="text-sm text-gray-400">
+                            Dubai, UAE
+                        </p>
+                    </div>
+
+                </div>
+
+                <span class="text-lg tracking-widest text-[#C49A44]">
+                    ★★★★★
+                </span>
+
+            </div>
+
+            <p class="leading-7 text-gray-500">
+                "Great experience from booking to landing. The service was professional and the flight was very comfortable."
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+    </div>
+
+    <div class="about-container">
+        <section class="about max-w-7xl mx-auto px-6 py-24" id="about">
+
+    <div class="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-center">
+
+        <!-- Left -->
+        <div>
+
+            <p class="mb-3 text-sm font-semibold uppercase tracking-[0.25em] text-[#1597D4]">
+                About Aerova
+            </p>
+
+            <h2 class="text-4xl font-extrabold leading-tight text-[#071A2B] md:text-5xl">
+                More Than A Flight.
+                <span class="text-[#1597D4]">
+                    It's The Journey.
+                </span>
+            </h2>
+
+            <p class="mt-6 max-w-xl text-lg leading-8 text-gray-500">
+                Aerova Airways was created with one simple idea:
+                make travelling easier, smoother, and more enjoyable.
+            </p>
+
+            <p class="mt-4 max-w-xl leading-7 text-gray-500">
+                From the moment you search for your flight to the moment
+                you reach your destination, we focus on delivering a
+                reliable and comfortable travel experience.
+            </p>
+
+            <button
+                class="mt-8 rounded-xl bg-[#1597D4] px-6 py-3 font-semibold text-white shadow-lg shadow-[#1597D4]/20 transition-all duration-300 hover:-translate-y-1 hover:bg-[#0d83bb] hover:shadow-xl hover:shadow-[#1597D4]/30 active:scale-95"
+            >
+                Discover Aerova
+            </button>
+
+        </div>
+
+
+        <!-- Right -->
+        <div class="relative">
+
+            <div class="rounded-[2rem] border border-[#1597D4]/10 bg-white p-8 shadow-[0_20px_50px_rgba(7,26,43,0.08)]">
+
+                <div class="grid grid-cols-2 gap-5">
+
+                    <div class="rounded-2xl bg-[#F6F9FC] p-6">
+                        <p class="text-3xl font-extrabold text-[#1597D4]">
+                            50+
+                        </p>
+
+                        <p class="mt-2 text-sm font-medium text-gray-500">
+                            Destinations
+                        </p>
+                    </div>
+
+                    <div class="rounded-2xl bg-[#F6F9FC] p-6">
+                        <p class="text-3xl font-extrabold text-[#1597D4]">
+                            24/7
+                        </p>
+
+                        <p class="mt-2 text-sm font-medium text-gray-500">
+                            Support
+                        </p>
+                    </div>
+
+                    <div class="rounded-2xl bg-[#F6F9FC] p-6">
+                        <p class="text-3xl font-extrabold text-[#1597D4]">
+                            99%
+                        </p>
+
+                        <p class="mt-2 text-sm font-medium text-gray-500">
+                            Satisfaction
+                        </p>
+                    </div>
+
+                    <div class="rounded-2xl bg-[#F6F9FC] p-6">
+                        <p class="text-3xl font-extrabold text-[#1597D4]">
+                            15K+
+                        </p>
+
+                        <p class="mt-2 text-sm font-medium text-gray-500">
+                            Happy Travelers
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+    </div>
+</main>
+<footer class="mt-10 border-t border-[#1597D4]/10 bg-[#071A2B] text-white">
+
+    <!-- CTA -->
+    <div class="border-b border-white/10">
+        <div class="mx-auto flex max-w-7xl flex-col gap-6 px-6 py-14 md:flex-row md:items-center md:justify-between lg:px-10">
+
+            <div>
+                <p class="mb-2 text-sm font-semibold uppercase tracking-[0.25em] text-[#1597D4]">
+                    Your Journey Starts Here
+                </p>
+
+                <h2 class="text-3xl font-extrabold md:text-4xl">
+                    Ready to Fly With Aerova?
+                </h2>
+
+                <p class="mt-3 max-w-xl text-gray-400">
+                    Discover new destinations and make your next journey unforgettable.
+                </p>
+            </div>
+
+            <button
+                class="login-btn w-fit rounded-xl bg-[#1597D4] px-7 py-3.5 font-semibold text-white shadow-lg shadow-[#1597D4]/20 transition-all duration-300 hover:-translate-y-1 hover:bg-[#0d83bb] hover:shadow-xl hover:shadow-[#1597D4]/30 active:scale-95"
+            >
+                Login
+            </button>
+
+        </div>
+    </div>
+
+
+    <!-- Main Footer -->
+    <div class="mx-auto grid max-w-7xl grid-cols-1 gap-12 px-6 py-14 sm:grid-cols-2 lg:grid-cols-4 lg:px-10">
+
+        <!-- Brand -->
+        <div>
+            <div class="mb-5 flex items-center gap-3">
+                <img
+                    src="./Assists/images/logo.png"
+                    alt="Aerova Airways"
+                    class="h-10 w-auto"
+                >
+
+                <span class="text-xl font-bold">
+                    Aerova Airways
+                </span>
+            </div>
+
+            <p class="max-w-xs leading-7 text-gray-400">
+                Connecting people, places, and unforgettable journeys
+                across the world.
+            </p>
+        </div>
+
+
+        <!-- Explore -->
+        <div>
+            <h3 class="mb-5 text-lg font-bold">
+                Explore
+            </h3>
+
+            <ul class="space-y-3 text-gray-400">
+
+                <li>
+                    <a href="#" class="transition-colors hover:text-[#1597D4]">
+                        Home
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#flights" class="transition-colors hover:text-[#1597D4]">
+                        Flights
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#services" class="transition-colors hover:text-[#1597D4]">
+                        Services
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#about" class="transition-colors hover:text-[#1597D4]">
+                        About Us
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+
+
+        <!-- Support -->
+        <div>
+            <h3 class="mb-5 text-lg font-bold">
+                Support
+            </h3>
+
+            <ul class="space-y-3 text-gray-400">
+
+                <li>
+                    <a href="#" class="transition-colors hover:text-[#1597D4]">
+                        Help Center
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#" class="transition-colors hover:text-[#1597D4]">
+                        Contact Us
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#" class="transition-colors hover:text-[#1597D4]">
+                        Privacy Policy
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#" class="transition-colors hover:text-[#1597D4]">
+                        Terms & Conditions
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+
+
+        <!-- Contact -->
+        <div>
+            <h3 class="mb-5 text-lg font-bold">
+                Contact
+            </h3>
+
+            <div class="space-y-4 text-gray-400">
+
+                <p>
+                    ✉ support@aerova.com
+                </p>
+
+                <p>
+                    ☎ +44 20 1234 5678
+                </p>
+
+                <p>
+                    📍 London, United Kingdom
+                </p>
+
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- Bottom -->
+    <div class="border-t border-white/10">
+        <div class="mx-auto flex max-w-7xl flex-col gap-3 px-6 py-6 text-sm text-gray-500 sm:flex-row sm:items-center sm:justify-between lg:px-10">
+
+            <p>
+                © 2026 Aerova Airways. All rights reserved.
+            </p>
+            <p>
+                Designed & Developed by Mr-Mmdzp
+            </p>
+            <p>
+                Fly farther. Discover more.
+            </p>
+
+        </div>
+    </div>
+
+</footer>
+     <script src="main.js" ></script>
+</body>
+</html>

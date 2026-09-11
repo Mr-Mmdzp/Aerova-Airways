@@ -1,0 +1,109 @@
+{
+    "companyLogo" : "./Assists/images/logo.png",
+    "heroBanner": "./Assists/images/hero-banner.png",
+
+
+  "flights": [
+    {
+      "id": 1,
+      "from": {
+        "english": "Tehran",
+        "persian": "تهران"
+      },
+      "to": {
+        "english": "London",
+        "persian": "لندن"
+      },
+      "departure": "2026-10-05",
+      "return": "2026-10-15",
+      "passengers": 1,
+      "price": 850,
+      "currency": "USD",
+      "airline": "Aerova",
+      "flightNumber": "AE101",
+      "duration": "7h 10m",
+      "stops": 0
+    },
+    {
+      "id": 2,
+      "from": {
+        "english": "Tehran",
+        "persian": "تهران"
+      },
+      "to": {
+        "english": "Paris",
+        "persian": "پاریس"
+      },
+      "departure": "2026-10-08",
+      "return": "2026-10-18",
+      "passengers": 1,
+      "price": 720,
+      "currency": "USD",
+      "airline": "Aerova",
+      "flightNumber": "AE204",
+      "duration": "6h 40m",
+      "stops": 0
+    },
+    {
+      "id": 3,
+      "from": {
+        "english": "London",
+        "persian": "لندن"
+      },
+      "to": {
+        "english": "Dubai",
+        "persian": "دبی"
+      },
+      "departure": "2026-10-12",
+      "return": "2026-10-20",
+      "passengers": 1,
+      "price": 610,
+      "currency": "USD",
+      "airline": "Aerova",
+      "flightNumber": "AE305",
+      "duration": "7h 25m",
+      "stops": 0
+    },
+    {
+      "id": 4,
+      "from": {
+        "english": "Paris",
+        "persian": "پاریس"
+      },
+      "to": {
+        "english": "New York",
+        "persian": "نیویورک"
+      },
+      "departure": "2026-10-15",
+      "return": "2026-10-25",
+      "passengers": 1,
+      "price": 920,
+      "currency": "USD",
+      "airline": "Aerova",
+      "flightNumber": "AE410",
+      "duration": "8h 15m",
+      "stops": 0
+    },
+    {
+      "id": 5,
+      "from": {
+        "english": "Dubai",
+        "persian": "دبی"
+      },
+      "to": {
+        "english": "Tokyo",
+        "persian": "توکیو"
+      },
+      "departure": "2026-10-20",
+      "return": "2026-10-30",
+      "passengers": 1,
+      "price": 1100,
+      "currency": "USD",
+      "airline": "Aerova",
+      "flightNumber": "AE520",
+      "duration": "9h 50m",
+      "stops": 0
+    }
+  ]
+
+}

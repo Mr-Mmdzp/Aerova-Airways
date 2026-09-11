@@ -1,0 +1,35 @@
+@font-face {
+    font-family:vazir;
+    src: url(./Assists/fonts/Vazir.ttf) format("truetype");
+}
+@font-face {
+    font-family:outfit;
+    src: url(./Assists/fonts/Outfit-VariableFont_wght.ttf) format("truetype");
+}
+@font-face {
+    font-family:nuno;
+    src: url(./Assists/fonts/NunitoSans-VariableFont_YTLC\,opsz\,wdth\,wght.ttf) format("truetype");
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #071A2B;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(
+        to bottom,
+        #A9D6E5,
+        #1597D4
+    );
+    border-radius: 999px;
+    border: 2px solid #071A2B;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #ffffff;
+}
